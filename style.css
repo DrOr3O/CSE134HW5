@@ -1,0 +1,72 @@
+@font-face {
+    font-family: generalFont;
+    src: url(./font/QueensidesMedium-x30zV.ttf);
+}
+
+* {
+    font-family: generalFont;
+}
+
+header {
+    color: #667292;
+    font-size: small;
+}
+
+body {
+    max-height: 100vh;
+    width: 100%;
+    margin: 0 auto;
+}
+
+main {
+    display: grid;
+    padding: 40px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background-color: #2d3240;
+    overflow: hidden;
+}
+
+li {
+    float: right;
+}
+
+li a {
+    display: block;
+    padding: 14px 16px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+
+footer {
+    display: flex;
+    flex-direction: column;
+    background-color: #2d3240;
+    padding: 30px 30px 30px;
+}
+
+#backTop {
+    color: lightgray;
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+}
+
+#backTop:hover {
+    color: white;
+}
+
+h2 {
+    font-size: 21px;
+    font-weight: bold;
+}

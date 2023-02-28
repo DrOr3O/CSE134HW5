@@ -1,0 +1,40 @@
+img {
+    max-width: 500px;
+    max-height: 500px;
+}
+
+.card {
+    display: flex;
+    flex-direction: row;
+}
+
+h5 {
+    color: red;
+    animation-duration: 10s;
+    animation-name: colors;
+}
+
+@keyframes colors {
+    0% {
+        color: red;
+    }
+
+    25% {
+        color: yellow;
+    }
+
+    50% {
+        color: blue;
+    }
+
+    100% {
+        color: green;
+    }
+}
+
+@media (max-width: 480px) {
+    img {
+        max-width: 250px;
+        max-height: 250px;
+    }
+}
