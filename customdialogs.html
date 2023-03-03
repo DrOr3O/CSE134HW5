@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW4 customdialogs.html</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.1/purify.min.js"></script>
+</head>
+
+<body>
+
+    <dialog id="alertDialog">
+        <form method="dialog">
+            <p>Alert pressed</p>
+            <button>OK</button>
+        </form>
+    </dialog>
+
+    <dialog id="confirmDialog">
+        <form method="dialog">
+            <p>Do you confirm this?</p>
+            <button id="trueConfirm" value="true">OK</button>
+            <button id="falseConfirm" value="cancel">Cancel</button>
+        </form>
+    </dialog>
+
+    <dialog id="promptDialog">
+        <form method="dialog">
+            <label for="nameInput">what's your name:</label><br>
+            <input type="text" id="promptInput" name="nameInput">
+            <button id="ok">OK</button>
+            <button id="cancel">cancel</button>
+        </form>
+    </dialog>
+
+
+    <button id="alertBtn">Alert</button>
+    <button id="confirmBtn">Confirm</button>
+    <button id="promptBtn">prompt</button>
+    <output id="output"></output>
+    <script src="customdialog.js"></script>
+</body>
+
+</html>
