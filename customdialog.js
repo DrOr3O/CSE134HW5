@@ -44,3 +44,4 @@ promptok.addEventListener('click', () => {
 promptCancel.addEventListener('click', () => {
     output.innerHTML = `Prompt Result: Cancel`;
 });
+

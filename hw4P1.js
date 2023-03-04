@@ -13,26 +13,26 @@ alertBtn.addEventListener("click", () => {
 confirmBtn.addEventListener("click", () => {
     let result = confirm("Confirm?");
     if (result) {
-        output.textContent = `confirm result: ${result}`;
+        output.innerHTML = `<br><br> confirm result: ${result}`;
     } else {
-        output.textContent = "confirm result: False";
+        output.innerHTML = "<br><br> confirm result: False";
     }
 });
 
 promptBtn.addEventListener("click", () => {
     let result = prompt("Enter something:");
     if (result == null) {
-        output.textContent = "User didn't enter anything.";
+        output.innerHTML = `<br><br> User didn't enter anything`;
     } else {
-        output.innerHTML = `prompt result: ${result}`;
+        output.innerHTML = `<br><br> prompt result: ${result}`;
     }
 });
 
 saferPromptBtn.addEventListener("click", () => {
     let result = window.prompt("safer prompt, enter something:");
     if (result == null) {
-        output.textContent = "User didn't enter anything.";
+        output.innerHTML = `<br><br> User didn't enter anything`;
     } else {
-        output.innerHTML = `prompt result: ${DOMPurify.sanitize(result)}`;
+        output.innerHTML = `<br><br> prompt result: ${DOMPurify.sanitize(result)}`;
     }
 });

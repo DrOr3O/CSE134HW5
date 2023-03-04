@@ -5,22 +5,47 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.1/purify.min.js"></script>
     <title>CRUD HW4</title>
 </head>
 
 <body>
-    <h1>A ToDo list:</h1>
-    <ul id="list">
-        <li>
-            <dialog>
-                <form method="dialog">
-                    
-                </form>
-            </dialog>
-        </li>
-        
-    </ul>
-    <button>Add</button>
+    <main>
+        <h1>Post List</h1>
+        <ul id="list">
+        </ul>
+    </main>
+
+    <dialog id="emptyPrompt">
+        <form method="dialog">
+            <p>Please don't leave empty field!</p>
+            <button>Ok</button>
+        </form>
+    </dialog>
+
+    <dialog id="delPrompt">
+        <form method="dialog">
+            <p>Delete item?</p>
+            <button id="delTrue" value="True">Ok</button>
+            <button id="delFalse" value="False">Cancel</button>
+        </form>
+    </dialog>
+
+    <dialog id="addPrompt">
+        <form method="dialog">
+            <label for="dateInput">Date:</label><br>
+            <input type="text" id="dateInput" name="dateInput" required> <br>
+            <label for="titleInput">Title:</label><br>
+            <input type="text" id="titleInput" name="titleInput" required> <br>
+            <label for="summaryInput">Summary:</label><br>
+            <input type="textarea" id="summaryInput" name="summaryInput" required> <br>
+            <button id="trueConfirm" value="true">OK</button>
+            <button id="falseConfirm" value="cancel">Cancel</button>
+        </form>
+    </dialog>
+    <button id="addBtn">Add Item</button>
+
+    <script src="blog.js"></script>
 </body>
 
 </html>
