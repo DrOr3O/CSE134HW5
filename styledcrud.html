@@ -7,8 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styleCrud.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.1/purify.min.js"></script>
+    <script src="https://kit.fontawesome.com/0005df65c1.js" crossorigin="anonymous"></script>
     <script type="module" src="customdialog.js"></script>
     <script type="module" src="blog.js"></script>
+
     <title>CRUD HW4</title>
 </head>
 
@@ -76,8 +78,8 @@
                     <span> ${post.postDate} </span>
                     <span> ${post.postTitle} </span>
                     <span> ${post.postSummary} </span>
-                    <span class="edit" onclick="editPost(${index})">edit</span>
-                    <span class="delete" onclick="deletePost(${index})">delete</span>
+                    <span class="edit" onclick="editPost(${index})" ><i class="fa-solid fa-pen-to-square"></i></span>
+                    <span class="delete" onclick="deletePost(${index})"><i class="fa-solid fa-trash"></i></span>
                 </li>
                 `;
             }

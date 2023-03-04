@@ -8,6 +8,14 @@
     text-align: center;
 }
 
+i {
+    font-family: serif
+  }
+
+li {
+    list-style-type: none;
+}
+
 body {
     margin: 20px;
     border: 20px;
