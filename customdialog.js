@@ -1,47 +1,69 @@
-const alertBtn = document.getElementById("alertBtn")
-const alertDialog = document.getElementById("alertDialog")
-const confirmBtn = document.getElementById("confirmBtn")
-const confirmDialog = document.getElementById("confirmDialog")
-const confirmTrue = document.querySelector("#trueConfirm")
-const confirmFalse = document.querySelector("#falseConfirm")
-const promptBtn = document.getElementById("promptBtn")
-const promptDialog = document.getElementById("promptDialog")
-const promptok = document.getElementById("ok")
-const promptCancel = document.getElementById("cancel")
-const input = document.querySelector("#promptInput");
-const output = document.getElementById("output")
+export function customAlert(message) {
+    let dialogMarkup = `
+    <dialog id="alertDialog">
+        <form method="dialog">
+            <p>${message}</p>
+            <button>OK</button>
+        </form>
+    </dialog>
+    `
 
-function showDialog(button, dialog) {
-    button.addEventListener('click', () => {
+    setTimeout(() => {
+        document.body.insertAdjacentHTML('afterbegin', dialogMarkup)
+        let dialog = document.querySelector('dialog#alertDialog');
         dialog.showModal();
-    });
+
+        dialog.addEventListener("close", () => {
+            dialog.remove();
+        })
+    })
 }
 
-function ConfirmOutput(button, output) {
-    button.addEventListener('click', () => {
-        let buttonValue = button.value;
-        output.innerHTML = `Confirm result: "${buttonValue}"`;
-    });
+export function customConfirm(message, onClose) {
+    let dialogMarkup = `
+    <dialog id="confirmDialog">
+        <form method="dialog">
+            <p>${message}</p>
+            <button value="ok">OK</button>
+            <button value="cancel">Cancel</button>
+        </form>
+    </dialog>
+    `
+
+    setTimeout(() => {
+        document.body.insertAdjacentHTML('afterbegin', dialogMarkup)
+        let dialog = document.querySelector('dialog#confirmDialog');
+        dialog.showModal();
+
+        dialog.addEventListener("close", () => {
+            onClose(dialog.returnValue === "ok")
+            dialog.remove();
+        })
+    })
 }
 
-showDialog(alertBtn, alertDialog)
-showDialog(confirmBtn, confirmDialog)
-showDialog(promptBtn, promptDialog)
-ConfirmOutput(confirmTrue, output)
-ConfirmOutput(confirmFalse, output)
+export function customPrompt(message, onClose) {
+    let dialogMarkup = `
+    <dialog id="promptDialog">
+        <form method="dialog">
+            <label for="nameInput">${message}</label><br>
+            <input type="text" id="promptInput" name="nameInput" />
+            <button value="ok">OK</button>
+            <button value="cancel">Cancel</button>
+        </form>
+    </dialog>
+    `;
 
+    setTimeout(() => {
+        document.body.insertAdjacentHTML('afterbegin', dialogMarkup)
+        let dialog = document.querySelector("dialog#promptDialog");
+        dialog.showModal();
 
-promptok.addEventListener('click', () => {
-    output.textContent = "";
-    let returnValue = input.value;
-    if (returnValue == "") {
-        output.textContent = `There is nothing`;
-    } else {
-        output.innerHTML = `Prompt result: "${DOMPurify.sanitize(returnValue)}"`;
-    }
-})
+        dialog.addEventListener("close", () => {
+            onClose(dialog.returnValue !== "ok" ? "" : dialog.querySelector("#promptInput").value)
+            dialog.remove();
+        })
+    })
+}
 
-promptCancel.addEventListener('click', () => {
-    output.innerHTML = `Prompt Result: Cancel`;
-});
-
+export function postPrompt(initialPost={})
