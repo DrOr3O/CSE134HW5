@@ -65,16 +65,24 @@
 
         </section>
 
-        <template>
-            <h4>High School Logo</h4>
-            <img src="./pictures/Western-Yell-County-Wolverines.png" width="200" height="200">
-        </template>
     </main>
 
 
     <footer class="row">
         <a href="#" id="backTop">Go To Top</a>
     </footer>
+
+    <script>
+        main();
+        function main() {
+            fetch("/project.json");
+            renderProject();
+        }
+
+        function renderProject() {
+        }
+
+    </script>
 </body>
 
 </html>
