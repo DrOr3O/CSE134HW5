@@ -1,0 +1,32 @@
+@font-face {
+    font-family: generalFont;
+    src: url(./font/QueensidesMedium-x30zV.ttf);
+}
+
+* {
+    font-family: generalFont;
+    text-align: center;
+}
+
+body {
+    margin: 20px;
+    border: 20px;
+    padding: 20px;
+}
+
+section {
+    border: 3px solid black;
+    border-radius: 5px;
+}
+
+button {
+    background-color: black;
+    border: 5px solid black;
+    border-radius: 8px;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
