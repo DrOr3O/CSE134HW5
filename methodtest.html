@@ -10,29 +10,44 @@
 
 <body>
 
-    <form>
+    <form id="form">
         <label for="recId">ID:</label> <br>
-        <input type="number" name="recId" id="recId"> <br>
+        <input type="type" name="recId" id="recId" placeholder="000" required> <br>
         <label for="arcticleName">Article Name:</label> <br>
-        <input type="text" name="arcticleName" id="arcticleName"> <br>
+        <input type="text" name="arcticleName" id="arcticleName" placeholder="Article Name" required> <br>
         <label for="articleBody">Article Body:</label> <br>
-        <textarea name="articleBody" id="articleBody" cols="30" rows="10"></textarea>
-        <!-- date here --> <br><br>
-        <input type="submit" value="Submit"> 
+        <textarea name="articleBody" id="articleBody" cols="30" rows="10" placeholder="Article Body"
+            required></textarea>
+        <select name="reqType" id="reqType">
+            <option value="get">GET</option>
+            <option value="post">POST</option>
+            <option value="Put">PUT</option>
+            <option value="delete">DELETE</option>
+        </select>
+        <input type="submit" value="Submit">
     </form>
-    <hr>
-    <button type="button" id="postBtn">Post</button>
-    <button type="button" id="getBtn">Get</button>
-    <button type="button" id="putBtn">Put</button>
-    <button type="button" id="delBtn">Delete</button>
+
+    <output id="response"></output>
 
     <script>
+        const ENDPOINT = `https://httpbin.org/`
         const currDate = new Date().toLocaleString();
-        main();
+        const UIselector = { form: "#form", reqType: "#reqType" };
+
+        function getForm() {
+            form.addEventListener("submit", (e) => {
+                event.preventDefault()
+                console.log(ENDPOINT + reqType.value)
+            }
+            )
+        }
 
         function main() {
+            getForm();
             console.log(currDate);
         }
+
+        main();
     </script>
 </body>
 
