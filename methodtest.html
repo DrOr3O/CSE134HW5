@@ -18,11 +18,12 @@
         <label for="articleBody">Article Body:</label> <br>
         <textarea name="articleBody" id="articleBody" cols="30" rows="10" placeholder="Article Body"
             required></textarea>
+        <input type="hidden" name="currTime" id="currTime">
         <select name="reqType" id="reqType">
-            <option value="get">GET</option>
-            <option value="post">POST</option>
-            <option value="Put">PUT</option>
-            <option value="delete">DELETE</option>
+            <option value="GET">GET</option>
+            <option value="POST">POST</option>
+            <option value="PUT">PUT</option>
+            <option value="DELETE">DELETE</option>
         </select>
         <input type="submit" value="Submit">
     </form>
@@ -30,22 +31,59 @@
     <output id="response"></output>
 
     <script>
-        const ENDPOINT = `https://httpbin.org/`
-        const currDate = new Date().toLocaleString();
-        const UIselector = { form: "#form", reqType: "#reqType" };
+        const UIselector = { form: "#form", output: "#response" };
+        const form = document.getElementById("form")
+        const output = document.getElementById("response")
 
-        function getForm() {
-            form.addEventListener("submit", (e) => {
-                event.preventDefault()
-                console.log(ENDPOINT + reqType.value)
+
+        async function requestProcess(e) {
+            e.preventDefault();
+            let reqMethod = form.reqType.value;
+            let formData, queryData = getFormData();
+            let targetURL = makeURL(reqMethod, queryData);
+            let reqMsg = makeMsg(reqMethod, queryData);
+
+
+            let response = await fetch(targetURL, reqMsg);
+            output.textContent = JSON.stringify(await response.json());
+        }
+
+        function makeMsg(reqMethod, queryData) {
+            let msg = {
+                method: reqMethod,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-Sent-By': 'javascript'
+                },
+            };
+
+            if (reqMethod === "POST" || reqMethod === "PUT") {
+                msg.body = queryData;
             }
-            )
+            return msg;
         }
 
-        function main() {
-            getForm();
-            console.log(currDate);
+        function makeURL(reqMethod, queryData) {
+            if (reqMethod === "POST" || reqMethod === "PUT") {
+                let ENDPOINT = `https://httpbin.org/${reqMethod.toLowerCase()}?${queryData} `;
+                return ENDPOINT;
+            }
+            else {
+                let ENDPOINT = `https://httpbin.org/${reqMethod.toLowerCase()}`;
+                return ENDPOINT;
+            }
+
         }
+
+        function getFormData() {
+            form["currTime"] = new Date();
+            let formData = new FormData(form);
+            //turn the formdata into the search query after the ? 
+            let queryData = new URLSearchParams(formData);
+            return formData, queryData;
+        }
+
+        function main() { form.addEventListener("submit", requestProcess) };
 
         main();
     </script>
