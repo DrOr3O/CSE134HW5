@@ -1,0 +1,28 @@
+@font-face {
+    font-family: generalFont;
+    src: url(./font/QueensidesMedium-x30zV.ttf);
+}
+
+* {
+    font-family: generalFont;
+}
+
+
+output {
+    white-space: pre;
+}
+
+body {
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+}
+
+
+form {
+    margin-left: 200px;
+    margin-right: 200px;
+    border: 3px solid black;
+    text-align: center;
+    padding: 30px;
+}

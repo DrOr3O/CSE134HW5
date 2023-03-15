@@ -6,29 +6,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>methodTest</title>
+    <link rel="stylesheet" href="./method.css">
 </head>
 
 <body>
+    <nav>
+        <ul>
+            <li><a href="./pets.html">Pets</a></li>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./hobby.html">Hobbies</a></li>
+            <li><a href="./experience.html">Experiences</a></li>
+            <li><a href="./methodtest.html">Method Test</a> </li>
+        </ul>
+    </nav>
 
-    <form id="form">
-        <label for="recId">ID:</label> <br>
-        <input type="type" name="recId" id="recId" placeholder="000" required> <br>
-        <label for="arcticleName">Article Name:</label> <br>
-        <input type="text" name="arcticleName" id="arcticleName" placeholder="Article Name" required> <br>
-        <label for="articleBody">Article Body:</label> <br>
-        <textarea name="articleBody" id="articleBody" cols="30" rows="10" placeholder="Article Body"
-            required></textarea>
-        <input type="hidden" name="currTime" id="currTime">
-        <select name="reqType" id="reqType">
-            <option value="GET">GET</option>
-            <option value="POST">POST</option>
-            <option value="PUT">PUT</option>
-            <option value="DELETE">DELETE</option>
-        </select>
-        <input type="submit" value="Submit">
-    </form>
+    <main>
+        <form id="form">
+            <label for="recId">ID:</label> <br>
+            <input type="type" name="recId" id="recId" placeholder="000" required> <br>
+            <label for="arcticleName">Article Name:</label> <br>
+            <input type="text" name="arcticleName" id="arcticleName" placeholder="Article Name" required> <br>
+            <label for="articleBody">Article Body:</label> <br>
+            <textarea name="articleBody" id="articleBody" cols="30" rows="10" placeholder="Article Body"
+                required></textarea>
+            <input type="hidden" name="currTime" id="currTime"> <br><br>
+            <select name="reqType" id="reqType">
+                <option value="GET">GET</option>
+                <option value="POST">POST</option>
+                <option value="PUT">PUT</option>
+                <option value="DELETE">DELETE</option>
+            </select>
+            <input type="submit" value="Submit">
+        </form>
 
-    <output id="response"></output>
+        <output id="response"></output>
+    </main>
 
     <script>
         const UIselector = { form: "#form", output: "#response" };
@@ -45,7 +57,7 @@
 
 
             let response = await fetch(targetURL, reqMsg);
-            output.textContent = JSON.stringify(await response.json());
+            output.textContent = JSON.stringify(await response.json(), undefined, 2);
         }
 
         function makeMsg(reqMethod, queryData) {
